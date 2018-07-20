@@ -10,7 +10,7 @@ const genTime = () => {
   return Math.floor(Math.random() * (min + max)) + min;
 };
 
-const commentDataGen = (string, songLength) => {
+const commentDataGen = (string, songLength, songId) => {
   const comments = [];
   let stringArr = string.split(' ');
   
@@ -26,6 +26,7 @@ const commentDataGen = (string, songLength) => {
     }
     //assemble comments in an array
     comments.push({
+      songId,
       commentId,
       comment_text: commentText.join(' '),
       userImage,
@@ -38,8 +39,9 @@ const commentDataGen = (string, songLength) => {
 const applyComments = (dataSource) => {
   let data = [...dataSource];
   let mapped = data.map(element => {
+    const songId = element.id;
     const songLength = genTime();
-    const comments = commentDataGen(hipster, songLength);
+    const comments = commentDataGen(hipster, songLength, songId);
     element.songLength = songLength;
     element.comments = comments;
     return element;
