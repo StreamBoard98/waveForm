@@ -28,7 +28,7 @@ const commentDataGen = (string, songLength, songId) => {
     comments.push({
       songId,
       commentId,
-      comment_text: commentText.join(' '),
+      commentText: commentText.join(' '),
       userImage,
       commentTime,
     })
