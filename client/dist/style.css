@@ -1,0 +1,40 @@
+container {
+  display: flex; 
+  flex-direction: column; 
+}
+
+#musicPlayer {
+  height: 380px;
+  width: 1110px; 
+  border: 10px solid red;
+  margin: auto;
+}
+
+#waveform {
+  height: 100px;
+  width: 660px;
+  border: 10px solid yellow;
+  margin: auto;
+  position: absolute;
+  top: 265px;
+  left: 30px;
+}
+
+.bottom {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center; 
+}
+
+#suggestedTracks {
+  height: 1000px; 
+  width: 400px; 
+  border: 10px solid blue;
+
+}
+
+#comments {
+  height: 1000px;
+  width: 680px; 
+  border: 10px solid green;
+}
