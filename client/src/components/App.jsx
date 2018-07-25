@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styles from './app.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,10 +9,10 @@ class App extends React.Component {
       data: [],
     };
   }
-
+//
   render() {
     return (
-      <div className="content">
+      <div className={styles.content}>
         hello
       </div>
     );
