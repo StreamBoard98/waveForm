@@ -1,3 +1,15 @@
 .content {
   font-size: 20px;
 }
+
+.counter {
+  width: 1.1em;
+  height: 1em;
+  font-size: .75\rem;
+  color: #f3f3f3;
+  background-color: #333;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+}
