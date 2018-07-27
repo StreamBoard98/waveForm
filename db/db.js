@@ -28,25 +28,6 @@ const songSchema = mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-// for(let i = 0; i < data.length; i++) {
-//   const songDocument = new Song(data[i])
-//   songDocument.save((error, data) => {
-//     if (error) {
-//       console.log('Issue saving data', error);
-//     } else {
-//       console.log('Import successful');
-//     }
-//   });
-// }
-
-// Song.find((error, songs) => {
-//   if (error) {
-//     console.log('couldnt find tracks');
-//   } else {
-//     console.log('here are the tracks', songs);
-//   }
-// });
-
 const getSong = (id, callback) => {
   Song.find({ id: id }).exec((error, data) => {
     if (error) {
@@ -79,21 +60,6 @@ const saveSong = (error, song) => {
   }
 }
 
-// getSong(13, (err, data) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log('success');
-//   }
-// })
-
-// getAll((err, data) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log(data);
-//   }
-// });
 module.exports = {
   getAll,
   getSong
