@@ -10,9 +10,11 @@ class App extends React.Component {
       data: {},
       length: '',
       currentTime: '0:00',
+      canvas: null,
     };
 
     this.renderTime = this.renderTime.bind(this);
+    this.moveHandler = this.moveHandler.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +34,7 @@ class App extends React.Component {
 
   buildCanvas() {
     let canvas = document.getElementById('canvas');
+    this.setState( {canvas} );
     let ctx = canvas.getContext('2d');
     ctx.fillStyle = 'white'
     let randomHeight = () => {
@@ -42,6 +45,21 @@ class App extends React.Component {
       ctx.fillRect(i, (canvas.height / 2), 2, generatedHeight + 1);
       ctx.fillRect(i, (canvas.height / 2), 2, -generatedHeight);
     }
+  }
+
+  moveHandler(e) {
+    this.getMousePos(this.state.canvas, e);
+  }
+
+  getMousePos(canvas, e) {
+    let rect = canvas.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    console.log(x);
+    // console.log(e.clientX - rect.left);
+    // return {
+    //   x: e.clientX - rect.left,
+    //   y: e.clientY - rect.top
+    // }
   }
 
   renderTime(totalSeconds) {
@@ -63,7 +81,7 @@ class App extends React.Component {
     return (
       <div className={styles.content}>
         <div className={styles.counterLeft}>{this.state.currentTime}</div>
-        <canvas id="canvas" width="660" height="100">Please upgrade your browser to the latest Chrome version</canvas>
+        <canvas id="canvas" width="660" height="100" onMouseMove={this.moveHandler}>Please upgrade your browser to the latest Chrome version</canvas>
         <div className={styles.counterRight}>{this.state.length}</div>
       </div>
     );
