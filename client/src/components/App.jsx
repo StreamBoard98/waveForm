@@ -15,8 +15,8 @@ class App extends React.Component {
     this.buildCanvas();
   }
 
-  populateData() {
-    axios.get('/')
+  getSong(id) {
+    axios.get(`/songs/${id}`)
       .then(data => this.setState({data}))
       .catch(err => console.log(err));
   }
