@@ -55,6 +55,9 @@ class App extends React.Component {
     let rect = canvas.getBoundingClientRect();
     let x = e.clientX - rect.left;
     console.log(x);
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'orange';
+    ctx.fillRect(0, 0, x, canvas.height);
     // console.log(e.clientX - rect.left);
     // return {
     //   x: e.clientX - rect.left,
