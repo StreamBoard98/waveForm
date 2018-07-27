@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('../db/db');
 
 const app = express();
 
@@ -19,8 +20,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-// app.get('/', (req, res) => {
+app.get('/songs/:songId', (req, res) => {
+  const songId = req.params.songId;
+  db.getSong(songId,(error, data) => {
+    if (error) {
+      console.log('There was an error accessing db', error)
+    } else {
+      res.send(data);
+    }
+  });
+});
 
-// })
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
