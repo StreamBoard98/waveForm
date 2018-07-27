@@ -19,7 +19,6 @@ class App extends React.Component {
   componentDidMount() {
     this.buildCanvas();
     this.getSong(2);
-    // this.renderTime();
   }
 
   getSong(id) {
@@ -46,10 +45,6 @@ class App extends React.Component {
     }
   }
 
-  log() {
-    console.log(this.state)
-  }
-
   renderTime(totalSeconds) {
     if(typeof totalSeconds !== 'number') {
       totalSeconds = 0;
@@ -63,10 +58,6 @@ class App extends React.Component {
       formattedSeconds = `${seconds}`;
     }
     this.setState({length: `${minutes}:${formattedSeconds}`});
-    // console.log(seconds);
-    // console.log(`${minutes}:${formattedSeconds}`);
-    console.log('time',this.state.time);
-    console.log(totalSeconds);
   }
 
   render() {
