@@ -61,7 +61,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={styles.content} onClick={this.renderTime}>
+      <div className={styles.content}>
         <div className={styles.counterLeft}>{this.state.currentTime}</div>
         <canvas id="canvas" width="660" height="100">Please upgrade your browser to the latest Chrome version</canvas>
         <div className={styles.counterRight}>{this.state.length}</div>
