@@ -39,8 +39,8 @@ const getSong = (id, callback) => {
   });
 }
 
-const getAll = (callback) => {
-  Song.find({ id: 15 }).exec((error, data) => {
+const getAll = () => {
+  Song.find({}).exec((error, data) => {
     if (error) {
       console.log(err);
     } else {
@@ -51,7 +51,7 @@ const getAll = (callback) => {
 
 const saveSong = (error, song) => {
   if (error) {
-    console.log('error saving song', error);
+    console.log('Error saving song', error);
   } else {
     const song = new Song(song);
     song.save(() => {
