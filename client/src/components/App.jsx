@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './app.css';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,12 @@ class App extends React.Component {
 
   componentDidMount() {
     this.buildCanvas();
+  }
+
+  populateData() {
+    axios.get('/')
+      .then(data => this.setState({data}))
+      .catch(err => console.log(err));
   }
 
   buildCanvas() {
