@@ -12,7 +12,6 @@ class App extends React.Component {
       currentTime: '0:00',
     };
 
-    this.log = this.log.bind(this);
     this.renderTime = this.renderTime.bind(this);
   }
 
