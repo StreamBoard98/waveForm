@@ -28,37 +28,73 @@ const songSchema = mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-console.log
+// for(let i = 0; i < data.length; i++) {
+//   const songDocument = new Song(data[i])
+//   songDocument.save((error, data) => {
+//     if (error) {
+//       console.log('Issue saving data', error);
+//     } else {
+//       console.log('Import successful');
+//     }
+//   });
+// }
 
-for(let i = 0; i < data.length; i++) {
-  const songDocument = new Song(data[i])
-  songDocument.save((error, data) => {
+// Song.find((error, songs) => {
+//   if (error) {
+//     console.log('couldnt find tracks');
+//   } else {
+//     console.log('here are the tracks', songs);
+//   }
+// });
+
+const getSong = (id, callback) => {
+  Song.find({ id: id }).exec((error, data) => {
     if (error) {
-      console.log('Issue saving data', error);
+      console.log('There was an error looking up song in db', err);
     } else {
-      console.log('Import successful', data);
+      console.log('Song found!', data);
+      callback(null, data[0]);
     }
   });
 }
 
-Song.find((error, songs) => {
+const getAll = (callback) => {
+  Song.find({ id: 15 }).exec((error, data) => {
+    if (error) {
+      console.log(err);
+    } else {
+      console.log(data);
+    }
+  })
+}
+
+const saveSong = (error, song) => {
   if (error) {
-    console.log('couldnt find tracks');
+    console.log('error saving song', error);
   } else {
-    console.log('here are the tracks', songs);
+    const song = new Song(song);
+    song.save(() => {
+      console.log('Song saved');
+    })
   }
-});
+}
 
+// getSong(13, (err, data) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log('success');
+//   }
+// })
 
-// "id": 1,
-// "title": "reprehenderit marfa quinoa bag",
-// "artist": "Rick Astley",
-// "genre": "Jazz",
-// "album": "Whenever You Need Sombeody",
-// "songLength": 511,
-// "comments": [{
-//   "songId": 1,
-//   "commentId": 1,
-//   "comment_text": "reprehenderit. marfa quinoa bag tote kickstarter cillum incididunt letterpress vinegar",
-//   "userImage": "/.mary.png",
-//   "commentTime": 473
+// getAll((err, data) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(data);
+//   }
+// });
+module.exports = {
+  getAll,
+  getSong
+}
