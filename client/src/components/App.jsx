@@ -8,23 +8,34 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: {},
+      length: '',
+      currentTime: '0:00',
     };
+
+    this.log = this.log.bind(this);
+    this.renderTime = this.renderTime.bind(this);
   }
 
   componentDidMount() {
     this.buildCanvas();
+    this.getSong(2);
+    // this.renderTime();
   }
 
   getSong(id) {
     axios.get(`/songs/${id}`)
-      .then(data => this.setState({data}))
+      .then(data => {
+        this.setState({data: data.data});
+        return data;
+      })
+      .then(data => this.renderTime(data.data.songLength))
       .catch(err => console.log(err));
   }
 
   buildCanvas() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
-    console.log(canvas);
+    ctx.fillStyle = 'white'
     let randomHeight = () => {
       return Math.floor(Math.random() * (canvas.height / 2));
     }
@@ -35,11 +46,35 @@ class App extends React.Component {
     }
   }
 
+  log() {
+    console.log(this.state)
+  }
+
+  renderTime(totalSeconds) {
+    if(typeof totalSeconds !== 'number') {
+      totalSeconds = 0;
+    }
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds - minutes * 60;
+    let formattedSeconds = '';
+    if (seconds < 10) {
+      formattedSeconds = `0${seconds}`;
+    } else {
+      formattedSeconds = `${seconds}`;
+    }
+    this.setState({length: `${minutes}:${formattedSeconds}`});
+    // console.log(seconds);
+    // console.log(`${minutes}:${formattedSeconds}`);
+    console.log('time',this.state.time);
+    console.log(totalSeconds);
+  }
+
   render() {
     return (
-      <div className={styles.content}>
+      <div className={styles.content} onClick={this.renderTime}>
+        <div className={styles.counterLeft}>{this.state.currentTime}</div>
         <canvas id="canvas" width="660" height="100">Please upgrade your browser to the latest Chrome version</canvas>
-        <div className={styles.counter}>4:00</div>
+        <div className={styles.counterRight}>{this.state.length}</div>
       </div>
     );
   }
