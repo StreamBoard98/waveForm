@@ -24,7 +24,7 @@ app.get('/songs/:songId', (req, res) => {
   const songId = req.params.songId;
   db.getSong(songId,(error, data) => {
     if (error) {
-      console.log('There was an error accessing db', error)
+      res.status(500).send(err);
     } else {
       res.send(data);
     }
