@@ -11,6 +11,7 @@ class App extends React.Component {
       length: '',
       currentTime: '0:00',
       canvas: null,
+      hovering: false
     };
 
     this.renderTime = this.renderTime.bind(this);
@@ -48,21 +49,18 @@ class App extends React.Component {
   }
 
   moveHandler(e) {
-    this.getMousePos(this.state.canvas, e);
+    this.hoverWaveform(this.state.canvas, e);
   }
 
-  getMousePos(canvas, e) {
+  hoverWaveform(canvas, e) {
     let rect = canvas.getBoundingClientRect();
     let x = e.clientX - rect.left;
-    console.log(x);
     let ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'orange';
+    ctx.globalCompositeOperation = 'source-atop';
+    ctx.fillStyle = 'rgb(255, 85, 0)';
     ctx.fillRect(0, 0, x, canvas.height);
-    // console.log(e.clientX - rect.left);
-    // return {
-    //   x: e.clientX - rect.left,
-    //   y: e.clientY - rect.top
-    // }
+    ctx.fillStyle = 'white';
+    ctx.fillRect(canvas.width, 0, -(canvas.width - x), canvas.height);
   }
 
   renderTime(totalSeconds) {
@@ -84,7 +82,7 @@ class App extends React.Component {
     return (
       <div className={styles.content}>
         <div className={styles.counterLeft}>{this.state.currentTime}</div>
-        <canvas id="canvas" width="660" height="100" onMouseMove={this.moveHandler}>Please upgrade your browser to the latest Chrome version</canvas>
+        <canvas id="canvas" width="660" height="100" onMouseMove={this.moveHandler} onClick={this.clickHandler}>Please upgrade your browser to the latest Chrome version</canvas>
         <div className={styles.counterRight}>{this.state.length}</div>
       </div>
     );
