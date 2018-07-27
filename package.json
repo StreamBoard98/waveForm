@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/StreamBoard98/waveFormService#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongoose": "^5.2.5",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -41,9 +43,20 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
+  },
+  "jest": {
+    "testPathDirs": [
+      "<rootDir>client/src"
+    ],
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^.+\\.css$": "identity-obj-proxy",
+      "^.+\\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>client/src/__mocks__/fileMock.js"
+    }
   }
 }
