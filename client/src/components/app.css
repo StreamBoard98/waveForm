@@ -2,15 +2,22 @@
   font-size: 20px;
 }
 
-.counter {
+.counterRight, .counterLeft {
   font-family: 'Catamaran', sans-serif;
-  width: 1.1em;
-  height: 1em;
-  font-size: .75\rem;
-  color: #f3f3f3;
+  width: 2.11em;
+  height: 1.2em;
+  font-size: .70\rem;
+  color: rgb(204, 204, 204);
   background-color: #333;
   text-align: right;
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 50px;
+}
+
+.counterLeft {
+  color: rgb(255, 85, 0);
+  left: 0px;
+  right: auto;  
+  padding-right: 1px;
 }
