@@ -16,6 +16,7 @@ class App extends React.Component {
 
     this.renderTime = this.renderTime.bind(this);
     this.moveHandler = this.moveHandler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -57,10 +58,23 @@ class App extends React.Component {
     let x = e.clientX - rect.left;
     let ctx = canvas.getContext('2d');
     ctx.globalCompositeOperation = 'source-atop';
-    ctx.fillStyle = 'rgb(255, 85, 0)';
+    ctx.fillStyle = 'rgba(255, 85, 0, 0.55)';
     ctx.fillRect(0, 0, x, canvas.height);
     ctx.fillStyle = 'white';
     ctx.fillRect(canvas.width, 0, -(canvas.width - x), canvas.height);
+  }
+
+  clickHandler(e) {
+    this.clickWaveform(this.state.canvas, e);
+  }
+
+  clickWaveform(canvas, e) {
+    let rect = canvas.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let ctx = canvas.getContext('2d');
+    ctx.globalCompositeOperation = 'source-atop';
+    ctx.fillStyle = 'rgb(255, 85, 0, 0.75)';
+    ctx.fillRect(0, 0, x, canvas.height);
   }
 
   renderTime(totalSeconds) {
