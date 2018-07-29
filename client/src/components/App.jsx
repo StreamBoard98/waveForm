@@ -14,7 +14,7 @@ class App extends React.Component {
       hovering: false
     };
 
-    this.renderTime = this.renderTime.bind(this);
+    // this.renderTime = this.renderTime.bind(this);
     this.moveHandler = this.moveHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -30,7 +30,7 @@ class App extends React.Component {
         this.setState({data: data.data});
         return data;
       })
-      .then(data => this.renderTime(data.data.songLength))
+      .then(data => this.setState({ length: this.formatTime(data.data.songLength) }))
       .catch(err => console.log(err));
   }
 
@@ -62,6 +62,14 @@ class App extends React.Component {
     ctx.fillRect(0, 0, x, canvas.height);
     ctx.fillStyle = 'white';
     ctx.fillRect(canvas.width, 0, -(canvas.width - x), canvas.height);
+
+    const percent = x / canvas.width;
+    const hoverPercentage = Math.round(percent * 100);
+    console.log(percent);
+    const min = 0;
+    const max = this.state.data.songLength;
+    const playbackTime = Math.round(percent * (max - min) + min);
+    console.log(playbackTime);
   }
 
   clickHandler(e) {
@@ -77,7 +85,26 @@ class App extends React.Component {
     ctx.fillRect(0, 0, x, canvas.height);
   }
 
-  renderTime(totalSeconds) {
+  // renderTime(totalSeconds) {
+  //   if(typeof totalSeconds !== 'number') {
+  //     totalSeconds = 0;
+  //   }
+  //   let minutes = Math.floor(totalSeconds / 60);
+  //   let seconds = totalSeconds - minutes * 60;
+  //   let formattedSeconds = '';
+  //   if (seconds < 10) {
+  //     formattedSeconds = `0${seconds}`;
+  //   } else {
+  //     formattedSeconds = `${seconds}`;
+  //   }
+  //   this.setState({length: `${minutes}:${formattedSeconds}`});
+  // }
+
+  //move handler, add a way to parse how far into the scrub, which in our case would be the canvas element
+
+  // take that absolute value and somehow map it to the length of the song time.
+
+  formatTime(totalSeconds) {
     if(typeof totalSeconds !== 'number') {
       totalSeconds = 0;
     }
@@ -89,7 +116,7 @@ class App extends React.Component {
     } else {
       formattedSeconds = `${seconds}`;
     }
-    this.setState({length: `${minutes}:${formattedSeconds}`});
+    return `${minutes}:${formattedSeconds}`;
   }
 
   render() {
