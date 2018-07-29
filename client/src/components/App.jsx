@@ -65,11 +65,11 @@ class App extends React.Component {
 
     const percent = x / canvas.width;
     const hoverPercentage = Math.round(percent * 100);
-    console.log(percent);
     const min = 0;
     const max = this.state.data.songLength;
     const playbackTime = Math.round(percent * (max - min) + min);
-    console.log(playbackTime);
+
+    this.setState({currentTime: this.formatTime(playbackTime)});
   }
 
   clickHandler(e) {
