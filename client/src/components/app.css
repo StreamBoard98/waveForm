@@ -2,6 +2,16 @@
   font-size: 20px;
 }
 
+.canvas {
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+}
+
+.canvas:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
 .counterRight, .counterLeft {
   font-family: 'Catamaran', sans-serif;
   width: 2.11em;
