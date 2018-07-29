@@ -14,7 +14,6 @@ class App extends React.Component {
       hovering: false
     };
 
-    // this.renderTime = this.renderTime.bind(this);
     this.moveHandler = this.moveHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -84,25 +83,6 @@ class App extends React.Component {
     ctx.fillStyle = 'rgb(255, 85, 0, 0.75)';
     ctx.fillRect(0, 0, x, canvas.height);
   }
-
-  // renderTime(totalSeconds) {
-  //   if(typeof totalSeconds !== 'number') {
-  //     totalSeconds = 0;
-  //   }
-  //   let minutes = Math.floor(totalSeconds / 60);
-  //   let seconds = totalSeconds - minutes * 60;
-  //   let formattedSeconds = '';
-  //   if (seconds < 10) {
-  //     formattedSeconds = `0${seconds}`;
-  //   } else {
-  //     formattedSeconds = `${seconds}`;
-  //   }
-  //   this.setState({length: `${minutes}:${formattedSeconds}`});
-  // }
-
-  //move handler, add a way to parse how far into the scrub, which in our case would be the canvas element
-
-  // take that absolute value and somehow map it to the length of the song time.
 
   formatTime(totalSeconds) {
     if(typeof totalSeconds !== 'number') {
