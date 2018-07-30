@@ -5,20 +5,23 @@ container {
 
 #musicPlayer {
   height: 380px;
-  width: 1110px; 
   border: 10px solid red;
   margin: auto;
   background-color: #333;
 }
 
 #waveform {
-  height: 100px;
-  width: 660px;
-  border: 10px solid yellow;
-  margin: auto;
+  display: flex;
   position: absolute;
-  top: 265px;
+  right: 350px;
   left: 30px;
+  bottom: 30px;
+}
+
+.top {
+  width: 1200px;
+  position: relative;
+  margin: auto;
 }
 
 .bottom {
