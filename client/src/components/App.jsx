@@ -14,7 +14,6 @@ class App extends React.Component {
       hovering: false
     };
 
-    this.renderTime = this.renderTime.bind(this);
     this.moveHandler = this.moveHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -30,7 +29,7 @@ class App extends React.Component {
         this.setState({data: data.data});
         return data;
       })
-      .then(data => this.renderTime(data.data.songLength))
+      .then(data => this.setState({ length: this.formatTime(data.data.songLength) }))
       .catch(err => console.log(err));
   }
 
@@ -62,6 +61,14 @@ class App extends React.Component {
     ctx.fillRect(0, 0, x, canvas.height);
     ctx.fillStyle = 'white';
     ctx.fillRect(canvas.width, 0, -(canvas.width - x), canvas.height);
+
+    const percent = x / canvas.width;
+    const hoverPercentage = Math.round(percent * 100);
+    const min = 0;
+    const max = this.state.data.songLength;
+    const playbackTime = Math.round(percent * (max - min) + min);
+
+    this.setState({currentTime: this.formatTime(playbackTime)});
   }
 
   clickHandler(e) {
@@ -77,7 +84,7 @@ class App extends React.Component {
     ctx.fillRect(0, 0, x, canvas.height);
   }
 
-  renderTime(totalSeconds) {
+  formatTime(totalSeconds) {
     if(typeof totalSeconds !== 'number') {
       totalSeconds = 0;
     }
@@ -89,7 +96,7 @@ class App extends React.Component {
     } else {
       formattedSeconds = `${seconds}`;
     }
-    this.setState({length: `${minutes}:${formattedSeconds}`});
+    return `${minutes}:${formattedSeconds}`;
   }
 
   render() {
