@@ -2,22 +2,53 @@
   font-size: 20px;
 }
 
+.canvas {
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+}
+
+.canvas:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
 .counterRight, .counterLeft {
   font-family: 'Catamaran', sans-serif;
-  width: 2.11em;
-  height: 1.2em;
   font-size: .70\rem;
-  color: rgb(204, 204, 204);
-  background-color: #333;
+  color: rgb(167, 167, 167);
+  background-color: #000;
   text-align: right;
   position: absolute;
   right: 0px;
   top: 50px;
+  padding-left: 3px;
+  padding-right: 3px;
+  z-index: 1;
 }
 
 .counterLeft {
   color: rgb(255, 85, 0);
-  left: 0px;
-  right: auto;  
-  padding-right: 1px;
+  left: 0;
+  z-index: 1;
+  width: 1.3rem;
+  display: flex;
+}
+
+.commentWave {
+  width: 820px;
+  height: 36px;
+  position: absolute;
+  bottom: 0;
+  opacity: 0.5;
+  border-top: 1px solid #555555;
+}
+
+.commentBlock {
+  width: 820px;
+  height: 36px;
+  position: absolute;
+  bottom: 0;
+  background-color: #131313;
+  opacity: 0.3;
+  border-top: 1px solid black;
 }

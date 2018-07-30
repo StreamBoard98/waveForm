@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './app.css';
 import axios from 'axios';
-
+//
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -43,8 +43,8 @@ class App extends React.Component {
     }
     for(let i = 0; i < canvas.width; i += 3) {
       let generatedHeight = randomHeight();
-      ctx.fillRect(i, (canvas.height / 2), 2, generatedHeight + 1);
-      ctx.fillRect(i, (canvas.height / 2), 2, -generatedHeight);
+      ctx.fillRect(i, (canvas.height / 2), 2.5, generatedHeight + 1);
+      ctx.fillRect(i, (canvas.height / 2), 2.5, -generatedHeight);
     }
   }
 
@@ -103,8 +103,12 @@ class App extends React.Component {
     return (
       <div className={styles.content}>
         <div className={styles.counterLeft}>{this.state.currentTime}</div>
-        <canvas id="canvas" width="660" height="100" onMouseMove={this.moveHandler} onClick={this.clickHandler}>Please upgrade your browser to the latest Chrome version</canvas>
+        <canvas id="canvas" className={styles.canvas} width="820" height="100" onMouseMove={this.moveHandler} onClick={this.clickHandler}>Please upgrade your browser to the latest Chrome version</canvas>
         <div className={styles.counterRight}>{this.state.length}</div>
+        <div className={styles.commentWave}>
+          <div className={styles.commentBlock}></div>
+
+        </div>
       </div>
     );
   }
