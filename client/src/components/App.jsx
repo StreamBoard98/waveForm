@@ -101,7 +101,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={styles.content}>
+      <div className={`${styles.content} waveformHero`}>
         <div className={styles.counterLeft}>{this.state.currentTime}</div>
         <canvas id="canvas" className={styles.canvas} width="820" height="100" onMouseMove={this.moveHandler} onClick={this.clickHandler}>Please upgrade your browser to the latest Chrome version</canvas>
         <div className={styles.counterRight}>{this.state.length}</div>
