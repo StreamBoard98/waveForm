@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
     "express": "^4.16.3",
     "mongoose": "^5.2.5",
     "npm": "^6.2.0",
@@ -45,19 +46,30 @@
     "eslint-plugin-react": "^7.10.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.1",
+    "jest-canvas-mock": "^1.1.0",
     "jest-cli": "^23.4.2",
+    "jsdom": "11.12.0",
+    "jsdom-global": "3.0.2",
+    "sinon": "^6.1.4",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
   },
   "jest": {
-    "testPathDirs": [
+    "setupFiles": [
+      
+    ],
+    "roots": [
       "<rootDir>"
     ],
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^.+\\.css$": "identity-obj-proxy",
       "^.+\\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>client/src/__mocks__/fileMock.js"
-    }
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "client/src/components/*.{js,jsx}"
+    ]
   }
 }
