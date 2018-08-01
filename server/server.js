@@ -2,10 +2,11 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../db/db');
+const cors = require('cors');
 
 const app = express();
 
-
+app.use(cors());
 app.use((req, res, next) => {
   console.log(req.method, req.path);
   next();
