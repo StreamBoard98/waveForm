@@ -5,8 +5,8 @@ const db = require('../db/db');
 const cors = require('cors');
 
 const app = express();
-
 app.use(cors());
+
 app.use((req, res, next) => {
   console.log(req.method, req.path);
   next();
@@ -14,6 +14,8 @@ app.use((req, res, next) => {
 
 // serves static files
 app.use(express.static(path.join(__dirname, '../client/dist/')));
+
+// app.use('/songs/:id', express.static(path.join(__dirname, '../client/dist/')))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

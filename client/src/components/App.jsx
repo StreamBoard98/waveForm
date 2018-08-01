@@ -19,17 +19,21 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const listingID = global.window.location.pathname.match(/songs\/(\d+)/)[1];
+    console.log('this is the listing id',listingID);
     this.buildCanvas();
-    this.getSong(2);
+    this.getSong(listingID);
   }
 
   getSong(id) {
-    axios.get(`/songs/${id}`)
+    axios.get(`http://localhost:3000/songs/${id}`)
       .then(data => {
+        console.log('data', data.data);
+        console.log('state data', this.state.data)
         this.setState({data: data.data});
-        return data;
+        console.log('after state data is set', this.state.data)
+        this.setState({ length: this.formatTime(data.data.songLength) });
       })
-      .then(data => this.setState({ length: this.formatTime(data.data.songLength) }))
       .catch(err => console.log(err));
   }
 
