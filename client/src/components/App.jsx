@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './app.css';
 import axios from 'axios';
-//
+import styles from './app.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +11,7 @@ class App extends React.Component {
       length: '',
       currentTime: '0:00',
       canvas: null,
-      hovering: false
+      hovering: false,
     };
 
     this.moveHandler = this.moveHandler.bind(this);
@@ -20,18 +20,14 @@ class App extends React.Component {
 
   componentDidMount() {
     const listingID = global.window.location.pathname.match(/songs\/(\d+)/)[1];
-    console.log('this is the listing id',listingID);
     this.buildCanvas();
     this.getSong(listingID);
   }
 
   getSong(id) {
     axios.get(`http://localhost:3000/songs/${id}`)
-      .then(data => {
-        console.log('data', data.data);
-        console.log('state data', this.state.data)
-        this.setState({data: data.data});
-        console.log('after state data is set', this.state.data)
+      .then((data) => {
+        this.setState({ data: data.data });
         this.setState({ length: this.formatTime(data.data.songLength) });
       })
       .catch(err => console.log(err));
@@ -39,7 +35,7 @@ class App extends React.Component {
 
   buildCanvas() {
     let canvas = document.getElementById('canvas');
-    this.setState( {canvas} );
+    this.setState({ canvas });
     let ctx = canvas.getContext('2d');
     ctx.fillStyle = 'white'
     let randomHeight = () => {
