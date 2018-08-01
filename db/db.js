@@ -49,15 +49,19 @@ const getAll = () => {
   })
 }
 
-const saveSong = (error, song) => {
+const saveSong = (error, input) => {
   if (error) {
     console.log('Error saving song', error);
   } else {
-    const song = new Song(song);
+    const song = new Song(input);
     song.save(() => {
       console.log('Song saved');
     })
   }
+};
+
+for (let i = 0; i < data.length; i++) {
+  saveSong(null, data[i]);
 }
 
 module.exports = {
