@@ -33,6 +33,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/client/dist'),
     publicPath: '/public/',
-    filename: 'bundle.js',
+    filename: 'waveForm.js',
   },
 };
