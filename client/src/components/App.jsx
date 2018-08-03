@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   getSong(id) {
-    axios.get(`http://localhost:3000/songs/${id}`)
+    axios.get(`http://localhost:7888/songs/${id}`)
       .then((data) => {
         this.setState({ data: data.data });
         this.setState({ length: this.formatTime(data.data.songLength) });
