@@ -19,9 +19,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const listingID = global.window.location.pathname.match(/songs\/(\d+)/)[1];
-    this.buildCanvas();
-    this.getSong(listingID);
+    if (global.window.location.pathname.match(/songs\/(\d+)/)) {
+      const listingID = global.window.location.pathname.match(/songs\/(\d+)/)[1];
+      this.buildCanvas();
+      this.getSong(listingID);
+    }
   }
 
   getSong(id) {
