@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  frontendcapstone:
+    image: waveformservice
+    build: .
+    depends_on:
+      - 'database'
+    environment:
+      NODE_ENV: production
+    ports:
+      - 7888:7888
+
+  database:
+    image: mongo:latest
