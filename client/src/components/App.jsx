@@ -19,15 +19,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (global.window.location.pathname.match(/songs\/(\d+)/)) {
-      const listingID = global.window.location.pathname.match(/songs\/(\d+)/)[1];
-      this.buildCanvas();
-      this.getSong(listingID);
-    }
+    const listingID = global.window.location.pathname.match(/songs\/(\d+)/)[1];
+    this.buildCanvas();
+    this.getSong(listingID);
   }
 
   getSong(id) {
-    axios.get(`http://localhost:7888/songs/${id}`)
+    axios.get(`http://ec2-54-153-81-95.us-west-1.compute.amazonaws.com/songs/${id}`)
       .then((data) => {
         this.setState({ data: data.data });
         this.setState({ length: this.formatTime(data.data.songLength) });

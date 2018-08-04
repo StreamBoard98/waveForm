@@ -2,7 +2,7 @@ const data = require('../sampleCommentData');
 // console.log(data[0]);
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/waveform');
+mongoose.connect('mongodb://database:27017/waveform');
 
 const db = mongoose.connection;
 db.on('error', () => console.log('error connecting to mongo'));
