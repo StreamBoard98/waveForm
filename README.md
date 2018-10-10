@@ -1,10 +1,8 @@
-# commentsListAndSubmission
+# StreamBoard Waveform Service
 
-# StreamBoard commentsListandSubmission
+This is a React component for StreamBoard that renders a waveform for the song page.
 
-> React component for StreamBoard that displays a comment list and submission form. 
-
-## Related Projects
+## Related Components
 
   - https://github.com/StreamBoard98/suggestedTrackService
   - https://github.com/StreamBoard98/videoPlayerSkeletonService
@@ -23,16 +21,18 @@
 
 ## Requirements
 
-- Node 6.13.0
-- etc
-
-## Development
+- Node 6.4.1
 
 ### Installing Dependencies
 
 From within the root directory:
 
+Make sure MongoDB is running.
+
 ```sh
 npm install -g webpack
 npm install
 ```
+
+## Images
+![rendered component](./images/waveform.png)<!-- .element height="50%" width="50%" -->
