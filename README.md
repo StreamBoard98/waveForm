@@ -35,4 +35,4 @@ npm install
 ```
 
 ## Images
-![rendered component](./images/waveform.png)<!-- .element height="50%" width="50%" -->
+[![rendered component](./images/waveform.png)](https://youtu.be/j5EBjo9fPQ4)<!-- .element height="50%" width="50%" -->
