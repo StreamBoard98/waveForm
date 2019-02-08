@@ -4,6 +4,8 @@ import { createSerializer } from 'enzyme-to-json';
 
 //adapter config placement
 import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() })
+
 import App from './client/src/components/App';
 import sinon from 'sinon';
 
@@ -11,7 +13,6 @@ import 'canvas-prebuilt';
 
 expect.addSnapshotSerializer(createSerializer({ mode: 'deep' }));
 
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('<App /> component', () => {
 

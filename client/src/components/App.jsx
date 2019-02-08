@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   getSong(id) {
-    axios.get(`http://ec2-54-153-81-95.us-west-1.compute.amazonaws.com/songs/${id}`)
+    axios.get(`http://ec2-52-53-154-227.us-west-1.compute.amazonaws.com/songs/${id}`)
       .then((data) => {
         this.setState({ data: data.data });
         this.setState({ length: this.formatTime(data.data.songLength) });
